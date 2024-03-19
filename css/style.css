@@ -18,7 +18,35 @@ body {
     background-size: cover; 
     background-position: center; 
 }
-
+.easy_level {
+    background-color: #4CAF50; /* Зелений колір */
+    border: none;
+    color: white;
+    padding: 10px 20px; /* Зменшено розмір padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Зменшено розмір тексту */
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px; /* Зменшено радіус кутів */
+}
+.hard_level{
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 10px 20px; /* Зменшено розмір padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Зменшено розмір тексту */
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px; /* Зменшено радіус кутів */
+}
+.easy_level:hover, .hard_level:hover {
+    background-color: #0aa1e1; /* Зелений колір (темніший) при наведенні */
+}
 .game_check {
     margin-bottom: 20px;
 
@@ -55,7 +83,7 @@ body {
 }
 
 .card.shake {
-    animation: shake 0.35s ease-in-out;
+    animation: shake 0.25s ease-in-out;
 }
 
 @keyframes shake {
@@ -146,7 +174,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-    background-image: url(/images/game-fone.gif);
+    background-image: url(/images/game-fone.jpg);
     border-radius: 10px;
 }
 .cards,
