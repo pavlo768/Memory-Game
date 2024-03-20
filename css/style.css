@@ -244,3 +244,6 @@ body {
     background-color: #b00003; /* Темно-зелений колір при наведенні */
     align-items: flex-start;
 }
+.card-audio {
+    display: none;
+}

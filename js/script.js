@@ -24,53 +24,62 @@ document.addEventListener('DOMContentLoaded', () => {
     let disableDeck = false;
     let matched = 0;
 
-    // Функція для обертання картки
-    const flipCard = ({ target: clickedCard }) => {
-        if (cardOne !== clickedCard && !disableDeck) {
-            clickedCard.classList.add('flip');
-            flipsCount++;
-            const flipsCountElement = document.querySelector('.flips-count');
-            flipsCountElement.textContent = `Flips: ${flipsCount}`;
-            if (!timerInterval) {
-                startTimer(60);
-            }
-            if (!cardOne) {
-                return (cardOne = clickedCard);
-            }
-            cardTwo = clickedCard;
-            disableDeck = true;
-            const cardOneImg = cardOne.querySelector('.back-view img').src;
-            const cardTwoImg = cardTwo.querySelector('.back-view img').src;
-            matchCards(cardOneImg, cardTwoImg);
+   // Функція для обертання картки
+const flipCard = ({ target: clickedCard }) => {
+    if (cardOne !== clickedCard && !disableDeck) {
+        clickedCard.classList.add('flip');
+        flipsCount++;
+        const flipsCountElement = document.querySelector('.flips-count');
+        flipsCountElement.textContent = `Flips: ${flipsCount}`;
+        // Отримуємо аудіофайл
+        const cardAudio = clickedCard.querySelector('.card-audio');
+        // Відтворюємо звук при обертанні карти
+        cardAudio.currentTime = 0;
+        cardAudio.play();
+        if (!timerInterval) {
+            startTimer(60);
         }
-    };
+        if (!cardOne) {
+            return (cardOne = clickedCard);
+        }
+        cardTwo = clickedCard;
+        disableDeck = true;
+        const cardOneImg = cardOne.querySelector('.back-view img').src;
+        const cardTwoImg = cardTwo.querySelector('.back-view img').src;
+        matchCards(cardOneImg, cardTwoImg);
+    }
+};
 
-    // Функція для перевірки відповідності карток
-    const matchCards = (img1, img2) => {
-        if (img1 === img2) {
-            matched++;
-            if (matched == 8) {
-                setTimeout(() => {
-                    shuffleCard();
-                }, 1000);
-            }
-            cardOne.removeEventListener('click', flipCard);
-            cardTwo.removeEventListener('click', flipCard);
-            cardOne = cardTwo = '';
-            disableDeck = false;
-            return;
+
+   // Функція для перевірки відповідності карток
+const matchCards = (img1, img2) => {
+    if (img1 === img2) {
+        matched++;
+        if (matched == 8) {
+            clearInterval(timerInterval); // Зупинка таймера після відгадування всіх карток
+            setTimeout(() => {
+                shuffleCard();
+                stopTimer(60); // стоп таймера , щоб не починався заново
+            }, 1000);
         }
-        setTimeout(() => {
-            cardOne.classList.add('shake');
-            cardTwo.classList.add('shake');
-        }, 400);
-        setTimeout(() => {
-            cardOne.classList.remove('shake', 'flip');
-            cardTwo.classList.remove('shake', 'flip');
-            cardOne = cardTwo = '';
-            disableDeck = false;
-        }, 1200);
-    };
+        cardOne.removeEventListener('click', flipCard);
+        cardTwo.removeEventListener('click', flipCard);
+        cardOne = cardTwo = ''; // Очистити значення cardOne та cardTwo
+        disableDeck = false;
+        return;
+    }
+    setTimeout(() => {
+        cardOne.classList.add('shake');
+        cardTwo.classList.add('shake');
+    }, 400);
+    setTimeout(() => {
+        cardOne.classList.remove('shake', 'flip');
+        cardTwo.classList.remove('shake', 'flip');
+        cardOne = cardTwo = ''; // Очистити значення cardOne та cardTwo
+        disableDeck = false;
+    }, 1200);
+};
+
 
     // Функція для перемішування карток
     const shuffleCard = () => {
