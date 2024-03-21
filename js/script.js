@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Функція для відтворення звуку при фліпі картки з меншою гучністю
 const playFlipSound = () => {
-    const audio = new Audio('music-fone/music-fone-6.wav');
+    const audio = new Audio('music-fone/music-fone-2.wav');
     audio.volume = 0.15; // Задаємо гучність на половину від максимальної
     audio.play();
 };
@@ -58,7 +58,7 @@ const flipCard = ({ target: clickedCard }) => {
 const checkGameCompletion = () => {
     if (matched == 8) {
         clearInterval(timerInterval);
-        const audio = new Audio('music-fone/music-fone-8.wav');
+        const audio = new Audio('music-fone/music-fone-4.wav');
         audio.volume = 0.40;
         audio.play();
 
@@ -101,7 +101,7 @@ const matchCards = (img1, img2) => {
         disableDeck = false;
         
         // Відтворення звуку після вгадування двох карток
-        const audio = new Audio('music-fone/music-fone-7.wav');
+        const audio = new Audio('music-fone/music-fone-5.wav');
         audio.volume = 0.40;
         audio.play();
         
