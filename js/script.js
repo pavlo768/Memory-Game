@@ -24,18 +24,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let disableDeck = false;
     let matched = 0;
 
-   // Функція для обертання картки
+  // Функція для відтворення звуку при фліпі картки
+const playFlipSound = () => {
+    const audio = new Audio('music-fone/music-fone-6.wav');
+    audio.play();
+};
+
+// функція для обертання картки з відтворенням звуку
 const flipCard = ({ target: clickedCard }) => {
     if (cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add('flip');
         flipsCount++;
         const flipsCountElement = document.querySelector('.flips-count');
         flipsCountElement.textContent = `Flips: ${flipsCount}`;
-        // Отримуємо аудіофайл
-        const cardAudio = clickedCard.querySelector('.card-audio');
-        // Відтворюємо звук при обертанні карти
-        cardAudio.currentTime = 0;
-        cardAudio.play();
+        playFlipSound(); // Відтворюємо звук при фліпі карти
         if (!timerInterval) {
             startTimer(60);
         }
@@ -51,35 +53,52 @@ const flipCard = ({ target: clickedCard }) => {
 };
 
 
-   // Функція для перевірки відповідності карток
+//функція для перевірки завершення гри
+const checkGameCompletion = () => {
+    if (matched == 8) {
+        clearInterval(timerInterval);
+        setTimeout(() => {
+            shuffleCard();
+            matched = 0;
+            const audio = new Audio('music-fone/music-fone-8.wav');
+            audio.play();
+        }, 1000);
+    }
+};
+// Оновлена функція для перевірки невідповідності карток
+const mismatchCards = () => {
+    const audio = new Audio('music-fone/music-fone-9.wav');
+    audio.play();
+    setTimeout(() => {
+        cardOne.classList.remove('shake', 'flip');
+        cardTwo.classList.remove('shake', 'flip');
+        cardOne = cardTwo = '';
+        disableDeck = false;
+    }, 1200);
+};
+
+// Оновлена функція для перевірки відповідності карток
 const matchCards = (img1, img2) => {
     if (img1 === img2) {
         matched++;
-        if (matched == 8) {
-            clearInterval(timerInterval); // Зупинка таймера після відгадування всіх карток
-            setTimeout(() => {
-                shuffleCard();
-                stopTimer(60); // стоп таймера , щоб не починався заново
-            }, 1000);
-        }
+        checkGameCompletion(); // Перевірка завершення гри
         cardOne.removeEventListener('click', flipCard);
         cardTwo.removeEventListener('click', flipCard);
-        cardOne = cardTwo = ''; // Очистити значення cardOne та cardTwo
+        cardOne = cardTwo = '';
         disableDeck = false;
+        
+        // Відтворення звуку після вгадування двох карток
+        const audio = new Audio('music-fone/music-fone-7.wav');
+        audio.play();
+        
         return;
     }
     setTimeout(() => {
         cardOne.classList.add('shake');
         cardTwo.classList.add('shake');
     }, 400);
-    setTimeout(() => {
-        cardOne.classList.remove('shake', 'flip');
-        cardTwo.classList.remove('shake', 'flip');
-        cardOne = cardTwo = ''; // Очистити значення cardOne та cardTwo
-        disableDeck = false;
-    }, 1200);
+    mismatchCards(); // Викликаємо функцію для обробки невідповідності карток
 };
-
 
     // Функція для перемішування карток
     const shuffleCard = () => {
