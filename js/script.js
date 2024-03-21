@@ -1,44 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('audio-player');
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const volumeSlider = document.getElementById('volume-slider');
-    const rewindBtn = document.getElementById('rewind-btn');
-    const forwardBtn = document.getElementById('forward-btn');
-
-    let isPlaying = false;
-
-    playPauseBtn.addEventListener('click', () => {
-      if (isPlaying) {
-        audio.pause();
-        playPauseBtn.textContent = 'play_arrow';
-      } else {
-        playPauseBtn.textContent = 'pause';
-      }
-      isPlaying = !isPlaying;
-    });
-
-    prevBtn.addEventListener('click', () => {
-      // Implement logic for previous track
-    });
-
-    nextBtn.addEventListener('click', () => {
-      // Implement logic for next track
-    });
-
-    rewindBtn.addEventListener('click', () => {
-      audio.currentTime -= 10; // Rewind by 10 seconds
-    });
-
-    forwardBtn.addEventListener('click', () => {
-      audio.currentTime += 10; // Forward by 10 seconds
-    });
-
-    volumeSlider.addEventListener('input', () => {
-      const volume = volumeSlider.value / 100;
-      audio.volume = volume;
-    });
     const timerElement = document.querySelector('.count-down');
     let timerInterval;
 
@@ -64,8 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let disableDeck = false;
     let matched = 0;
 
-
-// Функція для відтворення звуку при фліпі картки з меншою гучністю
+  // Функція для відтворення звуку при фліпі картки з меншою гучністю
 const playFlipSound = () => {
     const audio = new Audio('music-fone/music-fone-6.wav');
     audio.volume = 0.15; // Задаємо гучність на половину від максимальної
@@ -119,7 +78,6 @@ const checkGameCompletion = () => {
         }, 10000);
     }
 };
-
 // Оновлена функція для перевірки невідповідності карток
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
@@ -132,7 +90,6 @@ const mismatchCards = () => {
         disableDeck = false;
     }, 700);
 };
-
 // Оновлена функція для перевірки відповідності карток
 const matchCards = (img1, img2) => {
     if (img1 === img2) {
@@ -157,24 +114,24 @@ const matchCards = (img1, img2) => {
     mismatchCards(); // Викликаємо функцію для обробки невідповідності карток
 };
 
-    // Функція для перемішування карток
-    const shuffleCard = () => {
-        matched = 0;
-        disableDeck = false;
-        cardOne = cardTwo = '';
-        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
-        arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, i) => {
-            card.classList.remove('flip');
-            const imgTag = card.querySelector('.back-view img');
-            imgTag.src = `images/img-${arr[i]}.png`;
-            card.addEventListener('click', flipCard);
-        });
-    };
+  // Функція для перемішування карток
+  const shuffleCard = () => {
+    matched = 0;
+    disableDeck = false;
+    cardOne = cardTwo = '';
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+    arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, i) => {
+        card.classList.remove('flip');
+        const imgTag = card.querySelector('.back-view img');
+        imgTag.src = `images/img-${arr[i]}.png`;
+        card.addEventListener('click', flipCard);
+    });
+};
 
-    // Функція для скидання гри
-    const resetGame = () => {
+      // Функція для скидання гри
+      const resetGame = () => {
         flipsCount = 0;
         const flipsCountElement = document.querySelector('.flips-count');
         flipsCountElement.textContent = 'Flips: 0';

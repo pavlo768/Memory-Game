@@ -15,7 +15,7 @@ body {
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
-    background-image: url(/images/game-fone-diamond.gif);
+    background-color: #00bd06;
     background-size: cover; 
     background-position: center; 
 }
@@ -244,7 +244,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-    background-image: url(/images/game-fone2.gif);
+    background-color: rgb(85, 0, 85);
     border-radius: 10px;
 }
 .cards,
