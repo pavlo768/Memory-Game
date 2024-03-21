@@ -1,5 +1,6 @@
 /* Import Google Font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
 
 * {
     margin: 0;
@@ -18,6 +19,61 @@ body {
     background-size: cover; 
     background-position: center; 
 }
+.audio-player {
+    display: flex;
+    align-items: center;
+    margin-top: -10px; /* Змініть значення за потреби */
+  }
+  
+  .material-icons {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin-right: 10px; /* Відступ між кнопками */
+    transition: background-color 0.3s ease; /* Плавна зміна кольору при наведенні */
+  }
+  
+  .material-icons:hover {
+    background-color: #6e009d; /* Колір при наведенні */
+  }
+  
+  .material-icons:last-child {
+    margin-right: 0; /* Виправлення останнього відступу */
+  }
+  
+  input[type="range"] {
+    appearance: none;
+    width: 100px;
+    height: 8px;
+    margin: 0 10px;
+    background: #ffffff;
+    border-radius: 5px;
+  }
+  
+  input[type="range"]:focus {
+    outline: none;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #ddff00;
+    cursor: pointer;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #00b6ee;
+    cursor: pointer;
+  }
+  
 .game_levels {
     text-align: center; /* Центруємо кнопки */
   }
@@ -26,37 +82,40 @@ body {
     display: inline-block; /* Встановлюємо відображення як блоки в рядок */
     margin: 0 5px; /* Додаємо невеликий відступ між кнопками */
   }
+  
 .easy_level {
-    background-color: #4CAF50; /* Зелений колір */
+    background-color: #0da412; /* Зелений колір */
     border: none;
     color: white;
     padding: 10px 20px; /* Зменшено розмір padding */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px; /* Зменшено розмір тексту */
+    font-size: 20px; /* Зменшено розмір тексту */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; /* Зменшено радіус кутів */
     margin-top: 20px;
-    margin-bottom: 20px;
+    font-family: 'Shrikhand Static', sans-serif;
+    font-weight: bold;
+   
 }
 .hard_level{
-    background-color: red;
+    background-color: rgb(202, 102, 2);
     border: none;
     color: white;
     padding: 10px 20px; /* Зменшено розмір padding */
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px; /* Зменшено розмір тексту */
+    font-size: 20px; /* Зменшено розмір тексту */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; /* Зменшено радіус кутів */
+    font-family: 'Shrikhand Static', sans-serif;
+    font-weight: bold;
 }
-.easy_level:hover, .hard_level:hover {
-    background-color: #0aa1e1; /* Зелений колір (темніший) при наведенні */
-}
+
 .game_check {
     margin-bottom: 20px;
 
@@ -184,7 +243,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-     background-image: url(/images/game-fone.gif);
+    background-image: url(/images/game-fone.gif);
     border-radius: 10px;
 }
 .cards,
@@ -209,27 +268,36 @@ body {
     margin-top: 10px;
     background: #fff;
     border-radius: 10px;
+    
 }
 
 .stats-element {
     height: 40px;
     width: 30%;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .stats-element:nth-child(1),
 .stats-element:nth-child(2) {
     border-right: 1px solid rgb(0, 4, 133);
     line-height: 40px;
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
+    font-family: 'Shrikhand Static', sans-serif;
+    font-weight: bold;
+    color: #05db0c;
 }
 
 .refresh-btn {
     height: 30px;
-    width: 80px;
+    width: 90px;
     border: 1px solid rgb(22, 0, 89);
     color: rgb(0, 13, 87);
     border-radius: 5px;
+    font-family: 'Shrikhand Static', sans-serif;
+    font-weight: bold;
+    color: #8802b8;
+    font-size: 20px;
 }
 
 .refresh-btn:hover {

@@ -12,16 +12,26 @@
     />
   </head>
   <body>
+    <div class="audio-player">
+      <button class="material-icons" id="prev-btn">skip_previous</button>
+      <button class="material-icons" id="rewind-btn">fast_rewind</button>
+      <button class="material-icons" id="play-pause-btn">play_arrow</button>
+      <button class="material-icons" id="forward-btn">fast_forward</button>
+      <button class="material-icons" id="next-btn">skip_next</button>
+      <input type="range" id="volume-slider" min="0" max="100" value="50" />
+    </div>
+
+    <audio id="audio-player" src="music-fone/music fone-1.mp3"></audio>
     <div class="stats">
       <div class="stats-element count-down">Time: 60s</div>
       <div class="stats-element flips-count">Flips: 0</div>
       <div class="stats-element">
-        <div class="refresh-btn">Refresh</div>
+        <div class="refresh-btn" >Refresh</div>
       </div>
     </div>
     <div class="game_levels">
-      <button class="easy_level">Легкий рівень</button>
-      <button class="hard_level">Складний рівень</button>
+      <button class="easy_level">Easy Level</button>
+      <button class="hard_level">Hard Level</button>
     </div>
     <div class="wrapper">
       <ul class="cards">

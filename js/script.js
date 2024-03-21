@@ -1,4 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('audio-player');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const volumeSlider = document.getElementById('volume-slider');
+    const rewindBtn = document.getElementById('rewind-btn');
+    const forwardBtn = document.getElementById('forward-btn');
+
+    let isPlaying = false;
+
+    playPauseBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        audio.pause();
+        playPauseBtn.textContent = 'play_arrow';
+      } else {
+        audio.play();
+        playPauseBtn.textContent = 'pause';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    prevBtn.addEventListener('click', () => {
+      // Implement logic for previous track
+    });
+
+    nextBtn.addEventListener('click', () => {
+      // Implement logic for next track
+    });
+
+    rewindBtn.addEventListener('click', () => {
+      audio.currentTime -= 10; // Rewind by 10 seconds
+    });
+
+    forwardBtn.addEventListener('click', () => {
+      audio.currentTime += 10; // Forward by 10 seconds
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      const volume = volumeSlider.value / 100;
+      audio.volume = volume;
+    });
     const timerElement = document.querySelector('.count-down');
     let timerInterval;
 
@@ -24,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let disableDeck = false;
     let matched = 0;
 
-  // Функція для відтворення звуку при фліпі картки
+
 // Функція для відтворення звуку при фліпі картки з меншою гучністю
 const playFlipSound = () => {
     const audio = new Audio('music-fone/music-fone-6.wav');
@@ -139,7 +180,7 @@ const matchCards = (img1, img2) => {
         const flipsCountElement = document.querySelector('.flips-count');
         flipsCountElement.textContent = 'Flips: 0';
         shuffleCard();
-        updateTimerDisplay(60);
+        updateTimerDisplay(0);
     };
 
     // Функція для оновлення гри
