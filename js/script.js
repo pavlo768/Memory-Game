@@ -18,18 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 1000);
     };
-
+    
     let flipsCount = 0;
     let cardOne, cardTwo;
     let disableDeck = false;
     let matched = 0;
 
   // Функція для відтворення звуку при фліпі картки
+// Функція для відтворення звуку при фліпі картки з меншою гучністю
 const playFlipSound = () => {
     const audio = new Audio('music-fone/music-fone-6.wav');
+    audio.volume = 0.15; // Задаємо гучність на половину від максимальної
     audio.play();
 };
-
 // функція для обертання картки з відтворенням звуку
 const flipCard = ({ target: clickedCard }) => {
     if (cardOne !== clickedCard && !disableDeck) {
@@ -53,28 +54,43 @@ const flipCard = ({ target: clickedCard }) => {
 };
 
 
-//функція для перевірки завершення гри
+
+// Оновлена функція для перевірки завершення гри
 const checkGameCompletion = () => {
     if (matched == 8) {
         clearInterval(timerInterval);
+        const audio = new Audio('music-fone/music-fone-8.wav');
+        audio.volume = 0.40;
+        audio.play();
+
+        // Виведення алерту "You Win" після відтворення звуку
+        setTimeout(() => {
+            alert('You Win!');
+        }, 500);
+
+        // Закриваємо всі картки через 10 секунд після відтворення музики
         setTimeout(() => {
             shuffleCard();
             matched = 0;
-            const audio = new Audio('music-fone/music-fone-8.wav');
-            audio.play();
-        }, 1000);
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+                card.classList.remove('flip');
+            });
+        }, 10000);
     }
 };
+
 // Оновлена функція для перевірки невідповідності карток
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
     audio.play();
+    audio.volume = 0.30;
     setTimeout(() => {
         cardOne.classList.remove('shake', 'flip');
         cardTwo.classList.remove('shake', 'flip');
         cardOne = cardTwo = '';
         disableDeck = false;
-    }, 1200);
+    }, 700);
 };
 
 // Оновлена функція для перевірки відповідності карток
@@ -89,6 +105,7 @@ const matchCards = (img1, img2) => {
         
         // Відтворення звуку після вгадування двох карток
         const audio = new Audio('music-fone/music-fone-7.wav');
+        audio.volume = 0.40;
         audio.play();
         
         return;
