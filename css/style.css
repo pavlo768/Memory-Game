@@ -14,7 +14,7 @@ body {
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
-    /*background-image: url(/images/game-fone.gif);*/
+    background-image: url(/images/game-fone.gif);
     background-size: cover; 
     background-position: center; 
 }
@@ -38,6 +38,8 @@ body {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; /* Зменшено радіус кутів */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .hard_level{
     background-color: red;
@@ -182,7 +184,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-     /*background-image: url(/images/game-fone.gif);*/
+     background-image: url(/images/game-fone.gif);
     border-radius: 10px;
 }
 .cards,
