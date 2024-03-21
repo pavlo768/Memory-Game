@@ -15,7 +15,7 @@ body {
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
-    background-image: url(/images/game-fone.gif);
+    background-image: url(/images/game-fone-diamond.gif);
     background-size: cover; 
     background-position: center; 
 }
@@ -98,7 +98,8 @@ body {
     margin-top: 20px;
     font-family: 'Shrikhand Static', sans-serif;
     font-weight: bold;
-   
+    margin-bottom: 20px;
+    margin-right: 80px;
 }
 .hard_level{
     background-color: rgb(202, 102, 2);
@@ -243,7 +244,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-    background-image: url(/images/game-fone.gif);
+    background-image: url(/images/game-fone2.gif);
     border-radius: 10px;
 }
 .cards,

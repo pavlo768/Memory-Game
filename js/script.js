@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.pause();
         playPauseBtn.textContent = 'play_arrow';
       } else {
-        audio.play();
         playPauseBtn.textContent = 'pause';
       }
       isPlaying = !isPlaying;
