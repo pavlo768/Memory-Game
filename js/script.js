@@ -67,8 +67,6 @@ const checkGameCompletion = () => {
 };
 // Оновлена функція для перевірки невідповідності карток
 const mismatchCards = () => {
-    const audio = new Audio('music-fone/music-fone-9.wav');
-    audio.play();
     setTimeout(() => {
         cardOne.classList.remove('shake', 'flip');
         cardTwo.classList.remove('shake', 'flip');
