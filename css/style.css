@@ -18,6 +18,14 @@ body {
     background-size: cover; 
     background-position: center; 
 }
+.game_levels {
+    text-align: center; /* Центруємо кнопки */
+  }
+  
+  .level-btn {
+    display: inline-block; /* Встановлюємо відображення як блоки в рядок */
+    margin: 0 5px; /* Додаємо невеликий відступ між кнопками */
+  }
 .easy_level {
     background-color: #4CAF50; /* Зелений колір */
     border: none;
