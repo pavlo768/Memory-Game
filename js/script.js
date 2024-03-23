@@ -1,45 +1,50 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const timerElement = document.querySelector('.count-down');
     let timerInterval;
-
     // Функція для оновлення відображення таймера
     const updateTimerDisplay = (time) => {
         timerElement.textContent = `Time: ${time}s`;
     };
 
-    // Функція для запуску таймера
-    const startTimer = (time) => {
-        timerInterval = setInterval(() => {
-            time--;
-            updateTimerDisplay(time);
-            if (time <= 0) {
-                clearInterval(timerInterval);
-                alert('Time is up!');
+  // Функція для запуску таймера
+  const startTimer = (time) => {
+    timerInterval = setInterval(() => {
+        time--;
+        updateTimerDisplay(time);
+        if (time <= 0) {
+            handleTimeUp(); // Викликаємо функцію обробки завершення часу
+        }
+    }, 1000);
+};
+
+const handleTimeUp = () => {
+    clearInterval(timerInterval);
+    alert('Time is up!');
+    setTimeout(() => {
+        // Закриття всіх відкритих карток
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card) => {
+            if (card.classList.contains('flip')) {
+                card.classList.remove('flip');
             }
-        }, 1000);
-    };
+        });
+    }, 4000);
+};
 
     let flipsCount = 0;
     let cardOne, cardTwo;
     let disableDeck = false;
     let matched = 0;
 
-    // Функція для відтворення звуку при фліпі картки з меншою гучністю
-    const playFlipSound = () => {
-        const audio = new Audio('music-fone/music-fone-6.wav');
-        audio.volume = 0.15; // Задаємо гучність на половину від максимальної
-        audio.play();
-    };
-
+  
     // Функція для оновлення графічного інтерфейсу кнопки play/pause
     const updatePlayPauseButton = () => {
         const playPauseButton = document.getElementById('play-pause-btn');
         const audioPlayer = document.getElementById('audio-player');
         if (audioPlayer.paused) {
-            playPauseButton.textContent = 'pause';
-        } else {
             playPauseButton.textContent = 'play_arrow';
+        } else {
+            playPauseButton.textContent = 'pause';
         }
     };
 
@@ -71,21 +76,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Додавання обробника подій для карток
    // Обробник подій для карток
 const handleCardClick = () => {
-    const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.src = 'music-fone/music-fone-1.mp3'; // Змініть src на потрібний вам шлях до аудіофайлу
-    audioPlayer.play();
-    // Видаляємо обробник події, щоб музика не запускалась при наступних кліках на картку
     cards.forEach((card) => {
         card.removeEventListener('click', handleCardClick);
     });
 };
-
 // Додавання обробника подій для карток
 const cards = document.querySelectorAll('.card');
 cards.forEach((card) => {
     card.addEventListener('click', handleCardClick);
 });
 
+  // Функція для відтворення звуку при фліпі картки з меншою гучністю
+  const playFlipSound = () => {
+    const audio = new Audio('music-fone/music-fone-6.wav');
+    audio.volume = 0.60; // Задаємо гучність на половину від максимальної
+    audio.play();
+};
 
 // функція для обертання картки з відтворенням звуку
 const flipCard = ({ target: clickedCard }) => {
@@ -139,7 +145,7 @@ const checkGameCompletion = () => {
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
     audio.play();
-    audio.volume = 0.30;
+    audio.volume = 0.60;
     setTimeout(() => {
         cardOne.classList.remove('shake', 'flip');
         cardTwo.classList.remove('shake', 'flip');
@@ -202,25 +208,32 @@ const matchCards = (img1, img2) => {
         resetGame();
     };
 
-    // Навішуємо обробник подій на кнопку "Легкий рівень"
-    document.querySelector('.easy_level').addEventListener('click', () => {
-        clearInterval(timerInterval);
-        resetGame();
-        startTimer(81);
-    });
+    const playMusic = (musicPath) => {
+        const audioPlayer = document.getElementById('audio-player');
+        audioPlayer.src = musicPath;
+        audioPlayer.play();
+    };
+    
+// Навішуємо обробник подій на кнопку "Легкий рівень"
+document.querySelector('.easy_level').addEventListener('click', () => {
+    clearInterval(timerInterval);
+    resetGame();
+    startTimer(81);
+    playMusic('music-fone/music-fone-1.mp3');
+    audioPlayer.volume = 0; // Зменшуємо гучність до мінімуму
+});
 
-    // Навішуємо обробник подій на кнопку "Складний рівень"
-    document.querySelector('.hard_level').addEventListener('click', () => {
-        clearInterval(timerInterval);
-        resetGame();
-        startTimer(61);
+// Навішуємо обробник подій на кнопку "Складний рівень"
+document.querySelector('.hard_level').addEventListener('click', () => {
+    clearInterval(timerInterval);
+    resetGame();
+    startTimer(11);
+    playMusic('music-fone/music-fone-1.mp3');
+    audioPlayer.volume = 0; // Зменшуємо гучність до мінімуму
     });
-
     // Навішуємо обробник подій на кнопку "Refresh"
     const refreshButton = document.querySelector('.refresh-btn');
     refreshButton.addEventListener('click', refreshGame);
 
-    const audioPlayer = document.getElementById('audio-player');
-    audioPlayer.src = 'music-fone/music-fone-1.mp3'; // Змініть src на потрібний вам шлях до аудіофайлу
-    audioPlayer.volume = 0.1; // Початкова гучність
+
 });
