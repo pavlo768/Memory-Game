@@ -15,14 +15,14 @@ body {
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
-    background-color: #00bd06;
+    background-color: #4025ee;
     background-size: cover; 
     background-position: center; 
 }
 .audio-player {
     display: flex;
     align-items: center;
-    margin-top: -10px; /* Змініть значення за потреби */
+    margin-top: -10px; 
   }
   
   .material-icons {
@@ -31,16 +31,16 @@ body {
     padding: 8px;
     border-radius: 50%;
     background-color: #ffffff;
-    margin-right: 10px; /* Відступ між кнопками */
-    transition: background-color 0.3s ease; /* Плавна зміна кольору при наведенні */
+    margin-right: 10px;
+    transition: background-color 0.3s ease; 
   }
   
   .material-icons:hover {
-    background-color: #6e009d; /* Колір при наведенні */
+    background-color: #dbdbdb; 
   }
   
   .material-icons:last-child {
-    margin-right: 0; /* Виправлення останнього відступу */
+    margin-right: 0; 
   }
   
   input[type="range"] {
@@ -75,46 +75,59 @@ body {
   }
   
 .game_levels {
-    text-align: center; /* Центруємо кнопки */
+    text-align: center; 
   }
   
   .level-btn {
-    display: inline-block; /* Встановлюємо відображення як блоки в рядок */
-    margin: 0 5px; /* Додаємо невеликий відступ між кнопками */
+    display: inline-block; 
+    margin: 0 5px; 
   }
   
+  .game_levels button {
+    transition: transform 0.2s;
+  }
+  
+  .game_levels button:hover {
+    transform: scale(1.1);
+  }
+  
+  .game_levels button:active {
+    transform: scale(0.9);
+  }
 .easy_level {
-    background-color: #0da412; /* Зелений колір */
+    background-color: #d0f156; 
     border: none;
-    color: white;
-    padding: 10px 20px; /* Зменшено розмір padding */
+    color: rgb(207, 0, 0);
+    padding: 10px 20px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px; /* Зменшено розмір тексту */
+    font-size: 20px; 
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 6px; /* Зменшено радіус кутів */
+    border-radius: 6px; 
     margin-top: 20px;
     font-family: 'Shrikhand Static', sans-serif;
     font-weight: bold;
     margin-bottom: 20px;
     margin-right: 80px;
+    border: 2px solid rgb(83, 6, 107);
 }
 .hard_level{
-    background-color: rgb(202, 102, 2);
+    background-color: rgb(176, 6, 6);
     border: none;
-    color: white;
-    padding: 10px 20px; /* Зменшено розмір padding */
+    color: rgb(61, 253, 51);
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px; /* Зменшено розмір тексту */
+    font-size: 20px; 
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 6px; /* Зменшено радіус кутів */
+    border-radius: 6px; 
     font-family: 'Shrikhand Static', sans-serif;
     font-weight: bold;
+    border: 2px solid rgb(248, 255, 54);
 }
 
 .game_check {
@@ -123,7 +136,7 @@ body {
 }
 .card .front-view span {
     font-size: 40px;
-    color: rgb(92, 0, 240);
+    color: rgb(40, 255, 241);
 }
 
 .cards,
@@ -244,7 +257,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-    background-color: rgb(85, 0, 85);
+    background-image: url(/images/game-fone2.gif);
     border-radius: 10px;
 }
 .cards,
@@ -309,7 +322,7 @@ body {
 .volume-btn {
     padding: 10px 20px;
     margin: 5px;
-    background-color: #4CAF50; /* Зелений колір */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -320,7 +333,7 @@ body {
 }
 
 .volume-btn:hover {
-    background-color: #b00003; /* Темно-зелений колір при наведенні */
+    background-color: #b00003;
     align-items: flex-start;
 }
 .card-audio {
