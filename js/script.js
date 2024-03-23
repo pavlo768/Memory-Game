@@ -12,8 +12,8 @@ const startTimer = (time) => {
         updateTimerDisplay(time);
         if (time === 3) {
             setTimeout(() => {
-                playMusic('music-fone/music-fone-11.wav'); // Додайте шлях до вашого аудіофайлу
-            }, 1000); // Встановлюємо затримку у 2000 мілісекунд (2 секунди)
+                playMusic('music-fone/music-fone-11.wav'); 
+            }, 1000); 
         }
         if (time <= 0) {
             handleTimeUp(); 
@@ -174,7 +174,7 @@ const refreshGame = () => {
         const audioPlayer = document.getElementById('audio-player');
         audioPlayer.src = musicPath;
         audioPlayer.play();
-        audioPlayer.volume = 0.3;
+        audioPlayer.volume = 0.6;
     };
     
 // обробник подій на кнопку "Легкий рівень"
@@ -191,9 +191,7 @@ document.querySelector('.hard_level').addEventListener('click', () => {
     resetGame();
     startTimer(61);
     playMusic('music-fone/music-fone-10.mp3');
-
     });
-    
     // обробник подій на кнопку "Refresh"
     const refreshButton = document.querySelector('.refresh-btn'); 
     refreshButton.addEventListener('click', refreshGame);
