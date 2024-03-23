@@ -1,27 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
     const timerElement = document.querySelector('.count-down');
     let timerInterval;
-
-    
     // Функція для оновлення відображення таймера
     const updateTimerDisplay = (time) => {
         timerElement.textContent = `Time: ${time}s`;
     };
-
-  // Функція для запуску таймера
-  const startTimer = (time) => {
+// Функція для запуску таймера
+const startTimer = (time) => {
     timerInterval = setInterval(() => {
         time--;
         updateTimerDisplay(time);
+        if (time === 3) {
+            setTimeout(() => {
+                playMusic('music-fone/music-fone-11.wav'); // Додайте шлях до вашого аудіофайлу
+            }, 1000); // Встановлюємо затримку у 2000 мілісекунд (2 секунди)
+        }
         if (time <= 0) {
             handleTimeUp(); 
         }
     }, 1000);
 };
 
+
 const handleTimeUp = () => {
     clearInterval(timerInterval);
     alert('Time is up!');
+    disableDeck = true; // Оновлення стану disableDeck
     setTimeout(() => {
         // Закриття всіх відкритих карток
         const cards = document.querySelectorAll('.card');
@@ -51,12 +55,13 @@ cards.forEach((card) => {
   // Функція для відтворення звуку при фліпі картки з меншою гучністю
   const playFlipSound = () => {
     const audio = new Audio('music-fone/music-fone-6.wav');
-    audio.volume = 0.20; 
+    audio.volume = 0.60; 
     audio.play();
 };
 
 //  для обертання картки з відтворенням звуку
 const flipCard = ({ target: clickedCard }) => {
+    if (disableDeck) return; // Додайте перевірку, яка перерве виконання функції, якщо disableDeck встановлено в true
     if (cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add('flip');
         flipsCount++;
@@ -76,12 +81,13 @@ const flipCard = ({ target: clickedCard }) => {
         matchCards(cardOneImg, cardTwoImg);
     }
 };
+
 // функція для перевірки завершення гри
 const checkGameCompletion = () => {
     if (matched == 8) {
         clearInterval(timerInterval);
         const audio = new Audio('music-fone/music-fone-8.wav');
-        audio.volume = 0.20;
+        audio.volume = 0.40;
         audio.play();
         setTimeout(() => {
             alert('You Win!');
@@ -100,7 +106,7 @@ const checkGameCompletion = () => {
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
     audio.play();
-    audio.volume = 0.20;
+    audio.volume = 0.60;
     setTimeout(() => {
         cardOne.classList.remove('shake', 'flip');
         cardTwo.classList.remove('shake', 'flip');
@@ -120,7 +126,7 @@ const matchCards = (img1, img2) => {
         
         // Відтворення звуку після вгадування двох карток
         const audio = new Audio('music-fone/music-fone-7.wav');
-        audio.volume = 0.20;
+        audio.volume = 0.40;
         audio.play();
         
         return;
@@ -157,31 +163,38 @@ const matchCards = (img1, img2) => {
         updateTimerDisplay(0);
     };
 
-    // Функція для оновлення гри
-    const refreshGame = () => {
-        clearInterval(timerInterval);
-        resetGame();
+// Функція для оновлення гри
+const refreshGame = () => {
+    clearInterval(timerInterval);
+    resetGame();
+    disableDeck = true; // Оновлення стану disableDeck
+};
+
+    const playMusic = (musicPath) => {
+        const audioPlayer = document.getElementById('audio-player');
+        audioPlayer.src = musicPath;
+        audioPlayer.play();
+        audioPlayer.volume = 0.3;
     };
-
-
-// Навішуємо обробник подій на кнопку "Легкий рівень"
+    
+// обробник подій на кнопку "Легкий рівень"
 document.querySelector('.easy_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
     startTimer(81);
+    playMusic('music-fone/music-fone-10.mp3');
 });
 
-// Навішуємо обробник подій на кнопку "Складний рівень"
+// обробник подій на кнопку "Складний рівень"
 document.querySelector('.hard_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
-    startTimer(61);
-});
+    startTimer(11);
+    playMusic('music-fone/music-fone-10.mp3');
 
-// Додамо можливість паузи та відтворення музики
-document.querySelector('.pause_music').addEventListener('click', pauseMusic);
-document.querySelector('.resume_music').addEventListener('click', resumeMusic);
+    });
+    
     // обробник подій на кнопку "Refresh"
-    const refreshButton = document.querySelector('.refresh-btn');
+    const refreshButton = document.querySelector('.refresh-btn'); 
     refreshButton.addEventListener('click', refreshGame);
 });
