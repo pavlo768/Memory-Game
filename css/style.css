@@ -15,10 +15,17 @@ body {
     justify-content: center;
     flex-flow: column;
     min-height: 100vh;
-    background-color: #4025ee;
+    background-color:  rgb(0, 151, 211);
     background-size: cover; 
     background-position: center; 
 }
+.stats-element.count-down,
+.stats-element.flips-count {
+  color: black !important;
+}
+
+
+
 .audio-player {
     display: flex;
     align-items: center;
@@ -70,7 +77,7 @@ body {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #00b6ee;
+    background: #ee6700;
     cursor: pointer;
   }
   
@@ -94,15 +101,17 @@ body {
   .game_levels button:active {
     transform: scale(0.9);
   }
+  
 .easy_level {
-    background-color: #d0f156; 
+    background-color: #0fb400; 
     border: none;
-    color: rgb(207, 0, 0);
+    color: rgb(0, 0, 0);
     padding: 10px 20px; 
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px; 
+    -webkit-text-stroke: 0.3px white; /* Тонка біла обводка */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; 
@@ -111,12 +120,15 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     margin-right: 80px;
-    border: 2px solid rgb(83, 6, 107);
+    border: 2px solid rgb(250, 250, 250);
+    font-weight: bold; /* Зробити текст жирним */
+    
 }
 .hard_level{
     background-color: rgb(176, 6, 6);
     border: none;
-    color: rgb(61, 253, 51);
+    -webkit-text-stroke: 0.3px white; /* Тонка біла обводка */
+    color: rgb(0, 0, 0);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -125,9 +137,10 @@ body {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; 
+    font-weight: bold; /* Зробити текст жирним */
     font-family: 'Shrikhand Static', sans-serif;
     font-weight: bold;
-    border: 2px solid rgb(248, 255, 54);
+    border: 2px solid rgb(255, 255, 255);
 }
 
 .game_check {
@@ -136,7 +149,7 @@ body {
 }
 .card .front-view span {
     font-size: 40px;
-    color: rgb(40, 255, 241);
+    color: rgb(81, 199, 246);
 }
 
 .cards,
@@ -257,7 +270,7 @@ body {
     height: 500px;
     width: 500px;
     padding: 25px;
-    background-color: #c000fa;
+    background-color: #ffffff;
     border-radius: 10px;
 }
 .cards,
@@ -352,12 +365,4 @@ body {
     font-size: 16px;
     transition: background-color 0.3s ease;
    
-}
-
-.volume-btn:hover {
-    background-color: #b00003;
-    align-items: flex-start;
-}
-.card-audio {
-    display: none;
 }
