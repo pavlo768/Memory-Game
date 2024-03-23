@@ -301,7 +301,29 @@ body {
     font-weight: bold;
     color: #05db0c;
 }
+.card {
+    transition: transform 0.2s; /* Анімація при наведенні курсору */
+}
 
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card:active {
+    transform: scale(0.9);
+}
+.refresh-btn {
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.refresh-btn:hover {
+    transform: scale(1.1);
+}
+
+.refresh-btn:active {
+    transform: scale(0.9);
+}
 .refresh-btn {
     height: 30px;
     width: 90px;
