@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         time--;
         updateTimerDisplay(time);
         if (time <= 0) {
-            handleTimeUp(); // Викликаємо функцію обробки завершення часу
+            handleTimeUp(); // Викликаю функцію обробки завершення часу
         }
     }, 1000);
 };
@@ -89,7 +89,7 @@ cards.forEach((card) => {
   // Функція для відтворення звуку при фліпі картки з меншою гучністю
   const playFlipSound = () => {
     const audio = new Audio('music-fone/music-fone-6.wav');
-    audio.volume = 0.60; // Задаємо гучність на половину від максимальної
+    audio.volume = 0.60; // Задаю гучність на половину від максимальної
     audio.play();
 };
 
@@ -100,7 +100,7 @@ const flipCard = ({ target: clickedCard }) => {
         flipsCount++;
         const flipsCountElement = document.querySelector('.flips-count');
         flipsCountElement.textContent = `Flips: ${flipsCount}`;
-        playFlipSound(); // Відтворюємо звук при фліпі карти
+        playFlipSound(); // Відтворюю звук при фліпі карти
         if (!timerInterval) {
             startTimer(60);
         }
@@ -130,7 +130,7 @@ const checkGameCompletion = () => {
             alert('You Win!');
         }, 500);
 
-        // Закриваємо всі картки через 10 секунд після відтворення музики
+        // Закриваю всі картки через 10 секунд після відтворення музики
         setTimeout(() => {
             shuffleCard();
             matched = 0;
@@ -214,26 +214,24 @@ const matchCards = (img1, img2) => {
         audioPlayer.play();
     };
     
-// Навішуємо обробник подій на кнопку "Легкий рівень"
+//  обробник подій на кнопку "Легкий рівень"
 document.querySelector('.easy_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
     startTimer(81);
     playMusic('music-fone/music-fone-1.mp3');
-    audioPlayer.volume = 0; // Зменшуємо гучність до мінімуму
+    audioPlayer.volume = 0; 
 });
 
-// Навішуємо обробник подій на кнопку "Складний рівень"
+//  обробник подій на кнопку "Складний рівень"
 document.querySelector('.hard_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
     startTimer(11);
     playMusic('music-fone/music-fone-1.mp3');
-    audioPlayer.volume = 0; // Зменшуємо гучність до мінімуму
+    audioPlayer.volume = 0; 
     });
-    // Навішуємо обробник подій на кнопку "Refresh"
+    // обробник подій на кнопку "Refresh"
     const refreshButton = document.querySelector('.refresh-btn');
     refreshButton.addEventListener('click', refreshGame);
-
-
 });
