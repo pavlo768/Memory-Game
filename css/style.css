@@ -103,7 +103,7 @@ body {
   }
   
 .easy_level {
-    background-color: #0fb400; 
+    background-color: #36e826; 
     border: none;
     color: rgb(0, 0, 0);
     padding: 10px 20px; 
@@ -111,7 +111,6 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 20px; 
-    -webkit-text-stroke: 0.3px white; /* Тонка біла обводка */
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; 
@@ -125,9 +124,8 @@ body {
     
 }
 .hard_level{
-    background-color: rgb(176, 6, 6);
+    background-color: rgb(255, 0, 0);
     border: none;
-    -webkit-text-stroke: 0.3px white; /* Тонка біла обводка */
     color: rgb(0, 0, 0);
     padding: 10px 20px;
     text-align: center;

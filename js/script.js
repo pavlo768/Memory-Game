@@ -82,26 +82,28 @@ const flipCard = ({ target: clickedCard }) => {
     }
 };
 
-// функція для перевірки завершення гри
 const checkGameCompletion = () => {
     if (matched == 8) {
         clearInterval(timerInterval);
         const audio = new Audio('music-fone/music-fone-8.wav');
         audio.volume = 0.40;
+        audio.oncanplaythrough = () => {
+            setTimeout(() => {
+                alert('You Win!');
+                setTimeout(() => {
+                    shuffleCard();
+                    matched = 0;
+                    const cards = document.querySelectorAll('.card');
+                    cards.forEach((card) => {
+                        card.classList.remove('flip');
+                    });
+                }, 100);
+            }, 500);
+        };
         audio.play();
-        setTimeout(() => {
-            alert('You Win!');
-        }, 500);
-        setTimeout(() => {
-            shuffleCard();
-            matched = 0;
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card) => {
-                card.classList.remove('flip');
-            });
-        }, 10000);
     }
 };
+
 //  функція для перевірки невідповідності карток
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
