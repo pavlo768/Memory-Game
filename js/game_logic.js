@@ -1,10 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     const timerElement = document.querySelector('.count-down');
     let timerInterval;
+
+
     // Функція для оновлення відображення таймера
     const updateTimerDisplay = (time) => {
         timerElement.textContent = `Time: ${time}s`;
     };
+
+
 // Функція для запуску таймера
 const startTimer = (time) => {
     timerInterval = setInterval(() => {
@@ -57,9 +62,9 @@ cards.forEach((card) => {
     audio.play();
 };
 
-//  для обертання картки з відтворенням звуку
+//  функція для обертання картки з відтворенням звуку
 const flipCard = ({ target: clickedCard }) => {
-    if (disableDeck) return; // Додайте перевірку, яка перерве виконання функції, якщо disableDeck встановлено в true
+    if (disableDeck) return; 
     if (cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add('flip');
         flipsCount++;
@@ -79,7 +84,7 @@ const flipCard = ({ target: clickedCard }) => {
         matchCards(cardOneImg, cardTwoImg);
     }
 };
-
+// Функція для перевірки завершення гри. Перевіряє, чи всі пари карток відкриті та відображені.
 const checkGameCompletion = () => {
     if (matched == 8) {
         clearInterval(timerInterval);
@@ -102,7 +107,7 @@ const checkGameCompletion = () => {
     }
 };
 
-//  функція для перевірки невідповідності карток
+// Функція для обробки невідповідності пари карток. Відтворює звуковий ефект помилки
 const mismatchCards = () => {
     const audio = new Audio('music-fone/music-fone-9.wav');
     audio.play();
@@ -114,7 +119,9 @@ const mismatchCards = () => {
         disableDeck = false;
     }, 700);
 };
-//  функція для перевірки відповідності карток
+
+// Функція для обробки відповідності пари карток. Якщо дві відкриті картки мають однакові зображення, 
+// вони залишаються обернутими, і лічильник відповідних пар збільшується.
 const matchCards = (img1, img2) => {
     if (img1 === img2) {
         matched++;
