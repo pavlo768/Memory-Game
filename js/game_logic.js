@@ -20,8 +20,6 @@ const startTimer = (time) => {
         }
     }, 1000);
 };
-
-
 const handleTimeUp = () => {
     clearInterval(timerInterval);
     alert('Time is up!');
