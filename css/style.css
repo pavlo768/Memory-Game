@@ -147,7 +147,7 @@ body {
 }
 .card .front-view span {
     font-size: 40px;
-    color: rgb(81, 199, 246);
+    color: rgb(255, 0, 0);
 }
 
 .cards,
@@ -221,7 +221,7 @@ body {
 }
 
 .card .back-view img {
-    max-width: 45px;
+    max-width: 85px;
 }
 
 .card .back-view {
