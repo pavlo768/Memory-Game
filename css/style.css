@@ -24,6 +24,23 @@ body {
   color: black !important;
 }
 
+.game_name {
+    margin-bottom: 35px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Shrikhand Static', sans-serif;
+    animation: colorChange 3s infinite alternate; 
+}
+
+@keyframes colorChange {
+    0% {
+        color: rgb(10, 255, 6); 
+    }
+
+    100% {
+        color: rgb(231, 255, 52);
+    }
+}
 
 
 .audio-player {
@@ -120,7 +137,7 @@ body {
     margin-bottom: 20px;
     margin-right: 80px;
     border: 2px solid rgb(250, 250, 250);
-    font-weight: bold; /* Зробити текст жирним */
+    font-weight: bold; 
     
 }
 .hard_level{
@@ -135,7 +152,7 @@ body {
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 6px; 
-    font-weight: bold; /* Зробити текст жирним */
+    font-weight: bold; 
     font-family: 'Shrikhand Static', sans-serif;
     font-weight: bold;
     border: 2px solid rgb(255, 255, 255);
@@ -235,34 +252,6 @@ body {
 .card.flip .front-view {
     transform: rotateY(180deg);
 }
-@media screen and (max-width: 700px) {
-    .cards {
-        height: 350px;
-        width: 350px;
-    }
-
-    .card .front-view img {
-        width: 17px;
-    }
-
-    .card .back-view img {
-        max-width: 40px;
-    }
-}
-@media screen and (max-width: 530px) {
-    .cards {
-        height: 300px;
-        width: 300px;
-    }
-
-    .card .front-view img {
-        width: 15px;
-    }
-
-    .card .back-view img {
-        max-width: 35px;
-    }
-}
 
 .wrapper {
     height: 500px;
@@ -304,7 +293,7 @@ body {
 
 .stats-element:nth-child(1),
 .stats-element:nth-child(2) {
-    border-right: 1px solid rgb(0, 4, 133);
+    border-right: 1px solid rgb(255, 255, 255);
     line-height: 40px;
     font-size: 24px;
     text-align: center;
@@ -313,7 +302,7 @@ body {
     color: #05db0c;
 }
 .card {
-    transition: transform 0.2s; /* Анімація при наведенні курсору */
+    transition: transform 0.2s; 
 }
 
 .card:hover {

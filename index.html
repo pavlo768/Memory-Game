@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game</title>
+    <link rel="shortcut icon" href="favicon-ico-1.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -12,7 +13,8 @@
     />
   </head>
   <body>
-    <audio id="audio-player" src="music-fone/music fone-1.mp3"></audio>
+    <audio id="audio-player"></audio>
+    <div class="game_name">Memory game</div>
     <div class="stats">
       <div class="stats-element count-down">Time: 60s</div>
       <div class="stats-element flips-count">Flips: 0</div>
@@ -156,6 +158,6 @@
         </li>
       </ul>
     </div>
-    <script src="./js/script.js"></script>
+    <script src="./js/game_logic.js"></script>
   </body>
 </html>
