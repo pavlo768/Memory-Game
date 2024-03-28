@@ -27,22 +27,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 }
 
+
+// Функція для показу модального вікна "Time Out!"
+function showTimeOutModal() {
+    const modal = document.getElementById('time-out-modal');
+    modal.style.display = 'block';
+  }
+  
+  // Функція для закриття модального вікна "Time Out!"
+  function closeTimeOutModal() {
+    const modal = document.getElementById('time-out-modal');
+    modal.style.display = 'none';
+  }
+  
+  // Обробник події для кнопки "Ok" у вікні "Time Out!"
+  document.getElementById('ok-button').addEventListener('click', closeTimeOutModal);
+  
+
 // Функція для обробки закінчення часу гри
-    function handleTimeUp() {
+function handleTimeUp() {
     clearInterval(timerInterval);
-    alert('Time is up!');
+    showTimeOutModal(); // Показати модальне вікно "Time Out!"
     disableDeck = true;
     // Затримка перед закриттям всіх відкритих карток
     setTimeout(() => {
-        // Закриття всіх відкритих карток
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card) => {
-            if (card.classList.contains('flip')) {
-                card.classList.remove('flip');
-            }
-        });
+      // Закриття всіх відкритих карток
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card) => {
+        if (card.classList.contains('flip')) {
+          card.classList.remove('flip');
+        }
+      });
     }, 4000);
-}
+  }
+  
     let flipsCount = 0;
     let cardOne, cardTwo;
     let disableDeck = false;
@@ -91,31 +109,54 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
+// Функція для показу модального вікна "Do you want to play again?"
+function showPlayAgainModal() {
+    const modal = document.getElementById('play-again-modal');
+    modal.style.display = 'block';
+  }
+  
 // Функція для перевірки завершення гри
 function checkGameCompletion() {
     if (matched == 8) {
-        clearInterval(timerInterval);
-        disableDeck = true;
-
-        const audio = new Audio('music-fone/music-fone-8.wav');
-        audio.volume = 0.40;
-        audio.oncanplaythrough = () => {
-            setTimeout(() => {
-                alert('You Win!');
-                // Затримка перед закриттям карток
-                setTimeout(() => {
-                    shuffleCard();
-                    matched = 0;
-                    const cards = document.querySelectorAll('.card');
-                    cards.forEach((card) => {
-                        card.classList.remove('flip');
-                    });
-                }, 10000); // Затримка  10 секунд перед закриттям карток
-            }, 500);
-        };
-        audio.play();
+      clearInterval(timerInterval);
+      disableDeck = true;
+  
+      const audio = new Audio('music-fone/music-fone-8.wav');
+      audio.volume = 0.40;
+      audio.oncanplaythrough = () => {
+        setTimeout(() => {
+          showPlayAgainModal(); 
+          setTimeout(() => {
+            shuffleCard();
+            matched = 0;
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card) => {
+              card.classList.remove('flip');
+            });
+          }, 10000); 
+        }, 500);
+      };
+      audio.play();
     }
-}
+  }
+  
+  document.getElementById('yes-button').addEventListener('click', () => {
+    // Код для рестарту гри
+    refreshGame();
+    closeModal();
+  });
+  
+  document.getElementById('no-button').addEventListener('click', () => {
+    // Нічого не робимо, просто закриваємо вікно
+    closeModal();
+  });
+  
+  // Функція для закриття модального вікна
+  function closeModal() {
+    const modal = document.getElementById('play-again-modal');
+    modal.style.display = 'none';
+  }
+  
 
 //  функція для перевірки невідповідності карток
     function mismatchCards() {
@@ -206,7 +247,7 @@ document.querySelector('.easy_level').addEventListener('click', () => {
 document.querySelector('.hard_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
-    startTimer(61);
+    startTimer(11);
     playMusic('music-fone/music-fone-10.mp3');
     });
 // обробник подій на кнопку "Refresh"
