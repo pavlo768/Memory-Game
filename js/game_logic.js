@@ -42,16 +42,14 @@ function showTimeOutModal() {
   
   // Обробник події для кнопки "Ok" у вікні "Time Out!"
   document.getElementById('ok-button').addEventListener('click', closeTimeOutModal);
-  
+
 
 // Функція для обробки закінчення часу гри
 function handleTimeUp() {
     clearInterval(timerInterval);
-    showTimeOutModal(); // Показати модальне вікно "Time Out!"
+    showTimeOutModal(); 
     disableDeck = true;
-    // Затримка перед закриттям всіх відкритих карток
     setTimeout(() => {
-      // Закриття всіх відкритих карток
       const cards = document.querySelectorAll('.card');
       cards.forEach((card) => {
         if (card.classList.contains('flip')) {
@@ -139,18 +137,15 @@ function checkGameCompletion() {
       audio.play();
     }
   }
-  
+
   document.getElementById('yes-button').addEventListener('click', () => {
-    // Код для рестарту гри
     refreshGame();
     closeModal();
   });
-  
   document.getElementById('no-button').addEventListener('click', () => {
-    // Нічого не робимо, просто закриваємо вікно
     closeModal();
   });
-  
+
   // Функція для закриття модального вікна
   function closeModal() {
     const modal = document.getElementById('play-again-modal');
