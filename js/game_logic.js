@@ -198,7 +198,7 @@ function playMusic(musicPath) {
 document.querySelector('.easy_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
-    startTimer(21);
+    startTimer(61);
     playMusic('music-fone/music-fone-10.mp3');
 });
 
@@ -206,7 +206,7 @@ document.querySelector('.easy_level').addEventListener('click', () => {
 document.querySelector('.hard_level').addEventListener('click', () => {
     clearInterval(timerInterval);
     resetGame();
-    startTimer(71);
+    startTimer(81);
     playMusic('music-fone/music-fone-10.mp3');
     });
 // обробник подій на кнопку "Refresh"
