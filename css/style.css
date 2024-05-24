@@ -43,12 +43,7 @@ body {
 }
 
 
-.audio-player {
-    display: flex;
-    align-items: center;
-    margin-top: -10px; 
-  }
-  
+
   .material-icons {
     font-size: 24px;
     cursor: pointer;
@@ -65,37 +60,6 @@ body {
   
   .material-icons:last-child {
     margin-right: 0; 
-  }
-  
-  input[type="range"] {
-    appearance: none;
-    width: 100px;
-    height: 8px;
-    margin: 0 10px;
-    background: #ffffff;
-    border-radius: 5px;
-  }
-  
-  input[type="range"]:focus {
-    outline: none;
-  }
-  
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #ddff00;
-    cursor: pointer;
-  }
-  
-  input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #ee6700;
-    cursor: pointer;
   }
   
 .game_levels {
