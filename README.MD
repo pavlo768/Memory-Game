@@ -1,6 +1,6 @@
 [![CI](https://github.com/pavlo768/Memory-Game/actions/workflows/blank.yml/badge.svg)](https://github.com/pavlo768/Memory-Game/actions/workflows/blank.yml)
 
-##Memory Game
+#Memory Game
 
 Memory game
 
