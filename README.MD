@@ -1,4 +1,6 @@
-[![CI](https://github.com/pavlo768/Memory-Game/actions/workflows/blank.yml/badge.svg)](https://github.com/pavlo768/Memory-Game/actions/workflows/blank.yml)
+# Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/db15bf87-9a33-4067-ae04-7440edfa89ca/deploy-status)](https://app.netlify.com/sites/memory-card-game32/deploys)
 
 # Project Memory Game
 
