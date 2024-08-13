@@ -10,4 +10,4 @@ As part of my final project I made a game Memory Game, the logic of the game is 
 link to the game :
 
 
-https://pavlo768.github.io/Memory-Game/
+https://memory-card-game32.netlify.app/
